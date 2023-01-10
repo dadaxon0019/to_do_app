@@ -5,6 +5,8 @@ import 'package:flutter_to_do_app/data/database.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lottie/lottie.dart';
 
+import '../Screens/chart_screen.dart';
+
 class ToDoScreen extends StatefulWidget {
   @override
   State<ToDoScreen> createState() => _ToDoScreenState();
