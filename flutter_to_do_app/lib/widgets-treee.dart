@@ -30,7 +30,7 @@ class _WidgetTreeState extends State<WidgetTree> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
         height: 70,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: Colors.black,
@@ -47,23 +47,32 @@ class _WidgetTreeState extends State<WidgetTree> {
           backgroundColor: Color(0xff252525),
           items: const [
             BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/to-do-list.png'),
-                size: 30,
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 6),
+                child: ImageIcon(
+                  AssetImage('assets/icons/to-do-list.png'),
+                  size: 30,
+                ),
               ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/bar-chart.png'),
-                size: 30,
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 6),
+                child: ImageIcon(
+                  AssetImage('assets/icons/bar-chart.png'),
+                  size: 30,
+                ),
               ),
               label: 'Chart',
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/gear.png'),
-                size: 30,
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 6),
+                child: ImageIcon(
+                  AssetImage('assets/icons/gear.png'),
+                  size: 30,
+                ),
               ),
               label: 'Settings',
             ),

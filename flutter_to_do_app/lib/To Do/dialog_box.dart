@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class DialogBox extends StatelessWidget {
   final mainTitle;
   final descriptionTitle;
+  final taskNumb;
 
   VoidCallback onSave;
   VoidCallback onCancel;
@@ -12,6 +13,7 @@ class DialogBox extends StatelessWidget {
       required this.onSave,
       required this.onCancel,
       required this.mainTitle,
+      required this.taskNumb,
       required this.descriptionTitle})
       : super(key: key);
 

@@ -59,6 +59,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
       context: context,
       builder: (context) {
         return DialogBox(
+          taskNumb: db.toDoList1.length,
           mainTitle: _controller1,
           descriptionTitle: _controller2,
           onSave: saveNewTask,
@@ -200,6 +201,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                       itemBuilder: (context, index) {
                         return ToDoTile(
                           key: Key('$index'),
+                          taskNumber: index + 1,
                           taskName: db.toDoList1[index][0],
                           taskDescription: db.toDoList1[index][1],
                           taskCompleted: db.toDoList1[index][2],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoTile extends StatelessWidget {
+  final int taskNumber;
   final String taskName;
   final String taskDescription;
   final bool taskCompleted;
@@ -10,6 +11,7 @@ class ToDoTile extends StatelessWidget {
 
   ToDoTile({
     Key? key,
+    required this.taskNumber,
     required this.taskName,
     required this.taskDescription,
     required this.taskCompleted,
@@ -62,6 +64,7 @@ class ToDoTile extends StatelessWidget {
             ),
             child: Row(
               children: [
+                Text(' № $taskNumber'),
                 Checkbox(
                   value: taskCompleted,
                   onChanged: onChanged,
