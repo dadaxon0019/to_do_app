@@ -17,8 +17,7 @@ class IntroPage3 extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             height: 294.5,
-            child: Lottie.network(
-                'https://assets9.lottiefiles.com/private_files/lf30_sm3isyoz.json'),
+            child: Lottie.asset('assets/img/42768-trophy.json'),
           ),
           const SizedBox(
             height: 80,

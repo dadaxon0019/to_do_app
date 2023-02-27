@@ -21,7 +21,7 @@ class _WidgetTreeState extends State<WidgetTree> {
 
   final List<Widget> _pages = [
     ToDoScreen(),
-    ChartScreen(),
+    MyHomePage(),
     SettingScreen(),
   ];
   @override

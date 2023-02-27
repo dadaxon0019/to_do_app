@@ -16,8 +16,7 @@ class IntroPage1 extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            child: Lottie.network(
-                'https://assets9.lottiefiles.com/packages/lf20_GhP4yttyKg.json'),
+            child: Lottie.asset('assets/img/117420-checklist-in-green.json'),
           ),
           const SizedBox(
             height: 80,

@@ -17,8 +17,7 @@ class IntroPage2 extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             height: 294.5,
-            child: Lottie.network(
-                'https://assets9.lottiefiles.com/packages/lf20_ckedtvkj.json'),
+            child: Lottie.asset('assets/img/111844-schedule.json'),
           ),
           const SizedBox(
             height: 80,
