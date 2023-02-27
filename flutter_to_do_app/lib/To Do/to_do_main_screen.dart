@@ -1,3 +1,4 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_to_do_app/To%20Do/dialog_box.dart';
 import 'package:flutter_to_do_app/To%20Do/todo_tile.dart';
@@ -39,15 +40,19 @@ class _ToDoScreenState extends State<ToDoScreen> {
   int taskIcon = 1;
 
   //chekBoxChanged was tapped
-  void chekBoxChanged(bool? value, int index) {
+  chekBoxChanged(bool? value, int index) {
     db.toDoList1[index][1] = !db.toDoList1[index][1];
     if (value == true) {
-      totalFinishTask += 1 / db.toDoList1.length;
+      totalFinishTask += 1;
       print(totalFinishTask);
-    } else {
-      totalFinishTask -= 1 / db.toDoList1.length;
+    } else if (totalFinishTask > 0) {
+      totalFinishTask -= 1;
       print(totalFinishTask);
     }
+    if (totalFinishTask == db.toDoList1.length) {
+      print('finish');
+    }
+
     setState(() {});
     db.upDateBase();
   }
@@ -71,6 +76,11 @@ class _ToDoScreenState extends State<ToDoScreen> {
         },
       );
     });
+  }
+
+  void setState(VoidCallback fn) {
+    if (totalFinishTask == db.toDoList1.length) snack(context);
+    super.setState(fn);
   }
 
   GlobalKey key = GlobalKey();
@@ -112,20 +122,24 @@ class _ToDoScreenState extends State<ToDoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff252525),
-      appBar: AppBar(
-        backgroundColor: Color(0xff252525),
-        title: Text('Мои Задачи'),
-        actions: [
-          // CircularProgressIndicatorApp(
-          //   percent: totalFinishTask.toDouble(),
-          // ),
-          UserImage(),
-          SizedBox(
-            width: 15,
-          )
-        ],
-        elevation: 2,
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: AppBar(
+          backgroundColor: Color(0xff252525),
+          title: Text('Мои Задачи'),
+          automaticallyImplyLeading: false,
+          actions: [
+            // CircularProgressIndicatorApp(
+            //   percent: totalFinishTask.toDouble(),
+            // ),
+            UserImage(),
+            SizedBox(
+              width: 15,
+            )
+          ],
+          elevation: 2,
+          centerTitle: true,
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15),
@@ -345,4 +359,46 @@ class UserImage extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> snack(BuildContext context) {
+  return AnimatedSnackBar(
+    duration: Duration(seconds: 5),
+    mobileSnackBarPosition: MobileSnackBarPosition.top,
+    builder: ((context) {
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Color(0xff42494B),
+        ),
+        padding: const EdgeInsets.all(8),
+        child: Column(children: [
+          Container(
+            width: 45,
+            height: 45,
+            child: Lottie.asset('assets/img/success.json'),
+          ),
+          Text(
+            'Вы молодец !',
+            style: TextStyle(
+              fontSize: 16,
+              letterSpacing: 0.7,
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            'Все задачи выполнены',
+            style: TextStyle(
+              fontSize: 11,
+              letterSpacing: 0.7,
+              color: Colors.white,
+            ),
+          ),
+        ]),
+      );
+    }),
+  ).show(context);
 }
